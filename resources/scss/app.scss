@@ -1,0 +1,27 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+// 引入字體 (AdminLTE v4 推薦使用 Source Sans Pro 或相似字體)
+@import "@fontsource/source-sans-3/index.css";
+
+// 引入 SweetAlert2 樣式 (支援深色模式的官方主題或基礎樣式)
+@import "sweetalert2/dist/sweetalert2.min.css";
+
+// 引入 AdminLTE v4 核心樣式 (內部已包含 Bootstrap 5)
+@import "admin-lte/dist/css/adminlte.min.css";
+
+// 引入 bootstrap-icons
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// 引入 animate.css
+@import "animate.css/animate.min.css";
+
+// 自訂專案全域樣式
+body {
+    // 支援主題自適應類別，嚴禁硬編碼顏色
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// 表格標準化
+.table-responsive {
+    margin-bottom: 0;
+}
