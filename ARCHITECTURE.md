@@ -16,7 +16,7 @@
 * **統一配置**：系統頁尾 (Footer)、開發者標籤等統一存放於 `config/app.php`，嚴禁硬編碼於視圖中。
 
 ## 3. 技術棧規範 (Technology Stack)
-* **PHP**：8.3+。核心類別必須優先使用 `readonly class` 屬性提升穩定性。
+* **PHP**：8.3。核心類別必須優先使用 `readonly class` 屬性提升穩定性。
 * **核心框架**：Laravel 12.x。
 * **資料庫**：原生支援 SQLite、MySQL、MariaDB、PostgreSQL 及 SQL Server。
 * **UI 框架**：AdminLTE v4 (Bootstrap 5 / Vanilla JS)，嚴禁依賴 jQuery。
