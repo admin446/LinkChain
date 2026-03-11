@@ -1,59 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 多分店會員管理系統 (Multi-Branch Member Management System)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+本系統專為多實體店面、跨據點的會員管理需求所打造。核心架構落實單一職責原則 (SRP)，透過嚴格的權限隔離與現代化的 PHP 開發規範，確保系統具備高擴展性、易維護性與資料安全性。
 
-## About Laravel
+## 🌟 核心特色 (Features)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **多分店資料隔離 (Multi-Branch RBAC)**：嚴格區分「總部管理員」與「店點管理員」權限，確保各分店僅能存取所屬的會員與異動紀錄。
+* **企業級架構設計**：導入 Service-Action Pattern，將複雜商業邏輯自 Controller 抽離，提升代碼複用率與可測試性。
+* **強型別與現代化語法**：全面採用 PHP 8.3 嚴格模式 (declare(strict_types=1);) 與 readonly class，大幅降低運行時錯誤。
+* **報表整合能力**：支援會員資料與點數紀錄的 XLS 格式匯出與匯入功能。
+* **響應式深色模式**：後台採用 AdminLTE v4 (Bootstrap 5) 搭配 Alpine.js，原生支援 Dark Mode 自適應切換。
+* **容器化就緒 (Docker Ready)**：支援封裝為 Docker Hub 映像檔格式，實現本地開發與正式環境的高度一致性。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ 技術棧 (Tech Stack)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Backend**: PHP 8.3+, Laravel 12.x
+* **Frontend**: Blade, AdminLTE v4, Alpine.js, Vanilla JS (無 jQuery)
+* **Database**: SQLite (預設開發)、MySQL / PostgreSQL (正式環境)
 
-## Learning Laravel
+## 📋 系統需求 (Prerequisites)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+* PHP >= 8.3
+* Composer >= 2.x
+* Node.js >= 20.x & npm
+* 支援的關聯式資料庫引擎
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 快速起步 (Getting Started)
 
-## Laravel Sponsors
+### 1. 取得專案與安裝依賴
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    git clone [repository-url]
+    cd [project-folder]
+    composer install
+    npm install
 
-### Premium Partners
+### 2. 環境變數配置
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+複製 .env.example 並重新命名為 .env：
 
-## Contributing
+    cp .env.example .env
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+產生應用程式密鑰：
 
-## Code of Conduct
+    php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+請確認 .env 中的資料庫連線設定。若本地開發使用 SQLite，請執行：
 
-## Security Vulnerabilities
+    touch database/database.sqlite
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. 資料庫遷移與填充
 
-## License
+執行 Migration 建立資料表結構，並透過 Seeder 寫入預設的「總部管理員」帳號與基礎分店資料：
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    php artisan migrate --seed
+
+### 4. 編譯前端資源
+
+    npm run build
+    # 或在開發期間使用 npm run dev
+
+### 5. 啟動本地伺服器
+
+    php artisan serve
+
+## 👨‍💻 開發者指南 (Developer Guide)
+
+### 架構與命名規範
+請所有參與開發的團隊成員，在提交 PR 前務必詳閱專案根目錄下的 ARCHITECTURE.md，確保代碼風格、型別標註與 UI 互動邏輯符合系統標準。
+
+### IDE 智能提示 (IDE Helper)
+為確保 VS Code (Intelephense) 或 PHPStorm 能精準解析 Laravel 輔助函式與 Model 屬性，我們已配置 laravel-ide-helper（僅限本地開發環境）。
+每當新增 Model 欄位或更新套件後，建議執行以下指令更新提示檔：
+
+    php artisan ide-helper:generate
+    php artisan ide-helper:models -N
+    php artisan ide-helper:meta
+
+## 🐳 容器化部署 (Docker Deployment)
+本專案支援 Docker 部署，詳細的映像檔建置與 docker-compose 啟動參數，請參考專案內的 Dockerfile 與環境變數說明。
+
+## 📄 授權協議 (License)
+[Proprietary / MIT / 依公司規定自行填寫]

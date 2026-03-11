@@ -1,9 +1,12 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // 確保只在 local 開發環境才載入 IDE Helper，避免污染正式機
+        if ($this->app->environment('local')) {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
     }
 
     /**
