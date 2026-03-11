@@ -8,7 +8,7 @@
 * **企業級架構設計**：導入 Service-Action Pattern，將複雜商業邏輯（如 XLS 匯出/匯入）自 Controller 抽離，提升代碼複用率與可測試性。
 * **強型別與現代化語法**：全面採用 PHP 8.3+，強制要求宣告 `declare(strict_types=1);` 並優先使用 `readonly class`，從源頭降低運行時錯誤。
 * **極致的開發者體驗 (DX)**：規範嚴格的 PHPDoc 型別標註與身份驗證獲取方式，完美解決 Intelephense 等靜態分析工具的紅線解析痛點。
-* **零前端建置依賴 (Zero Build Tools)**：後台採用 AdminLTE v4 (Bootstrap 5)，透過純 Blade 伺服器端渲染搭配 Vanilla JS 與 Alpine.js 處理輕量互動。無須 Node.js 編譯即可運行，並原生支援 Dark Mode 自適應切換。
+* **零前端建置依賴 (Zero Build Tools)**：後台採用 AdminLTE v4 (Bootstrap 5)，透過純 Blade 伺服器端渲染搭配 Vanilla JS 與 Alpine.js 處理輕量互動。原生支援 Dark Mode 自適應切換。
 * **環境與安全自適應**：內建動態 HTTPS 強制轉換機制，完美兼容企業內部網路 (Intranet) 與外部 SSL (HTTPS) 混合環境。
 
 ## 🛠️ 技術棧 (Tech Stack)
